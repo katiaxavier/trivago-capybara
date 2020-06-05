@@ -12,9 +12,10 @@ describe 'Access the page' do
 
     fill_in 'sQuery', with: 'Manaus'
 
-    find(:xpath, '//li[@id="suggestion-56507/200"]//span[@class="ssg-title"]').click
+    find('#suggestion-56507/200').click
 
     find('.js-dealform-button-guests').click
+
     find('.roomtype-btn__label', text: 'Individual').click
 
     click_button 'Pesquisar'
