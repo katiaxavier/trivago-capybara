@@ -4,10 +4,11 @@ describe 'Cart' do
   before do
     visit 'http://192.168.151.17'
 
-    fill_in 'userLogin', with: 'v420'
+    fill_in 'userLogin', with: 'v456'
     click_button 'PRÓXIMO'
-    fill_in 'passwordLogin', with: 'v420'
+    fill_in 'passwordLogin', with: 'v456'
     click_button 'PRÓXIMO'
+    find('.mat-dialog-container', visible: false)
   end
 
   it 'should finalize sale', :sale do
