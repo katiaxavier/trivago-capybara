@@ -1,10 +1,25 @@
+# frozen_string_literal: true
+
 describe 'Login' do
+  it 'should log in' do
+    visit 'http://192.168.151.17'
 
-    it 'should log in', :test do
-        visit 'http://192.168.151.93:8080'
-    fill_in 'usuario', with: 'v320'
-    fill_in 'password', with: 'v320'
-    click_button 'ENTRAR'
-    end
+    fill_in 'userLogin', with: 'v420'
+    click_button 'PRÓXIMO'
+    fill_in 'passwordLogin', with: 'v420'
+    click_button 'PRÓXIMO'
 
+    expect(find('.user')).to have_content '456 - ANDERSON BARAT'
+  end
+
+  it 'should dont do log in invalid password', :test do
+    visit 'http://192.168.151.17'
+
+    fill_in 'userLogin', with: 'v420'
+    click_button 'PRÓXIMO'
+    fill_in 'passwordLogin', with: '1111'
+    click_button 'PRÓXIMO'
+
+    expect(find('.error')).to have_content 'Senha inválida'
+  end
 end
